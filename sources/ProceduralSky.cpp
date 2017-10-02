@@ -9,7 +9,6 @@
 namespace
 {
 	// Represents color. Color-space depends on context.
-	// In the code below, used to represent color in XYZ, and RGB color-space
 	union Color
 	{
 		struct {
@@ -36,7 +35,7 @@ namespace
 	};
 
 
-	// Converts color repesentation from CIE XYZ to RGB color-space.
+	// Converts color representation from CIE XYZ to RGB color-space.
 	Color XYZToRGB(const Color& xyz)
 	{
 		Color rgb;
@@ -72,7 +71,7 @@ namespace
 	// Computed using code from Game Engine Gems, Volume One, chapter 15. Implementation based on Dr. Richard Bird model.
 	// This table is used for piecewise linear interpolation. Day/night transitions are highly inaccurate.
 	// The scale of luminance change in Day/night transitions is not preserved. 
-	// Luminance at night was increased to eliminate need of HDR render.
+	// Luminance at night was increased to eliminate the need of HDR render.
 	static std::map<float, Color> skyLuminanceXYZ = {
 		{ 0.0,{ 0.308, 0.308, 0.411 } },
 		{ 1.0,{ 0.308, 0.308, 0.410 } },
@@ -176,7 +175,7 @@ namespace
 	};
 
 
-	// Controls sun position according to time, month, and observer's lattitude.
+	// Controls sun position according to time, month, and observer's latitude.
 	// Sun position computation based on Earth's orbital elements: https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 	class SunController
 	{
