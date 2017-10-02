@@ -1,0 +1,17 @@
+builddir  = .build
+
+rule geometryc_pack_normal
+    command = geometryc -f $in -o $out --packnormal 1
+    description = Converting geometry $in...
+
+rule texturec_lightmap
+    command = texturec -f $in -o $out -t r8
+
+pwd = .
+meshes = runtime/meshes
+textures = runtime/textures
+
+build $textures/lightmap.ktx: texturec_lightmap $pwd/assets/lightmap.png
+build $meshes/test_scene.bin: geometryc_pack_normal $pwd/assets/test_scene.obj
+
+include shader_build.ninja

@@ -1,0 +1,101 @@
+rule vs
+  command = shaderc $vflags --type vertex -i bgfx/examples/common -i bgfx/src -o $out -f $in 
+  
+rule fs
+  command = shaderc $fflags --type fragment -i bgfx/examples/common -i bgfx/src -o $out -f $in
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform windows -p vs_3_0 -O 3
+    platform = dx9
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform windows -p vs_3_0 -O 3
+    platform = dx9
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform windows -p ps_3_0 -O 3
+    platform = dx9
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform windows -p ps_3_0 -O 3
+    platform = dx9
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform windows -p ps_3_0 -O 3
+    platform = dx9
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform windows -p vs_4_0 -O 3    
+    platform = dx11
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform windows -p vs_4_0 -O 3    
+    platform = dx11
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform windows -p ps_4_0 -O 3
+    platform = dx11
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform windows -p ps_4_0 -O 3
+    platform = dx11
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform windows -p ps_4_0 -O 3
+    platform = dx11
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform android
+    platform = essl
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform android
+    platform = essl
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform android
+    platform = essl
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform android
+    platform = essl
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform android
+    platform = essl
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform linux -p 120
+    platform = glsl
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform linux -p 120
+    platform = glsl
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform linux -p 120
+    platform = glsl
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform linux -p 120
+    platform = glsl
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform linux -p 120
+    platform = glsl
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform osx -p metal
+    platform = metal
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform osx -p metal
+    platform = metal
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform osx -p metal
+    platform = metal
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform osx -p metal
+    platform = metal
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform osx -p metal
+    platform = metal
+
+build runtime/shaders/$platform/vs_proceduralsky_landscape.bin: vs sources/vs_proceduralsky_landscape.sc
+    vflags = --platform linux -p spirv
+    platform = spirv
+build runtime/shaders/$platform/vs_proceduralsky_sky.bin: vs sources/vs_proceduralsky_sky.sc
+    vflags = --platform linux -p spirv
+    platform = spirv
+build runtime/shaders/$platform/fs_proceduralsky_landscape.bin: fs sources/fs_proceduralsky_landscape.sc
+    fflags = --platform linux -p spirv
+    platform = spirv
+build runtime/shaders/$platform/fs_proceduralsky_sky.bin: fs sources/fs_proceduralsky_sky.sc
+    fflags = --platform linux -p spirv
+    platform = spirv
+build runtime/shaders/$platform/fs_proceduralsky_sky_ColorBandingFix.bin: fs sources/fs_proceduralsky_sky_ColorBandingFix.sc
+    fflags = --platform linux -p spirv
+    platform = spirv
